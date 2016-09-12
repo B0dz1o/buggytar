@@ -1,7 +1,7 @@
 # buggytar
 ## JS13k contest entry
 
-Don't know what Buggytar is? Imagine a crossover of a guitar and 80's sytle synthetiser!  
+Don't know what Buggytar is? Imagine a crossover of a guitar and 80's style synthetiser!  
 What's more important, though, it's a little buggy. Due to design flaw and technology imperfection, it plays two songs simultaneously.  
 Can you guess all mixins?
 
