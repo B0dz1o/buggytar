@@ -14,7 +14,7 @@ var fs = require('fs'),
     config = { js: [] };
 
 
-gulp.task('build', ['initbuild', 'jsmin', 'addjs', 'zip', 'unzip', 'clean', 'report']);
+gulp.task('build', ['initbuild', 'jsmin', 'addjs', 'copy', 'zip', 'unzip', 'clean', 'report']);
 
 
 gulp.task('serve', function() {
@@ -100,14 +100,21 @@ gulp.task('addjs', ['jsmin'], function() {
 
 });
 
+gulp.task('copy', function() {
+  var stream =  gulp.src('index.html')
+    .pipe(gulp.dest('docs/'));
+
+  return stream;
+});
+
 gulp.task('zip', ['addjs'], function() {
+
   var stream = gulp.src('tmp/index.html')
       .pipe(zip('game.zip'))
       .pipe(gulp.dest('.'));
 
   return stream;
 });
-
 
 gulp.task('unzip', ['zip'], function() {
   var stream = gulp.src('game.zip')
