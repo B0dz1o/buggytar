@@ -2,9 +2,9 @@
   "name": "buggytar",
   "version": "0.1.0",
   "description": "JS13kgames entry",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "test": "test"
+    "start": "gulp build"
   },
   "author": "Piotr Bogdan",
   "license": "GPL-3.0",
