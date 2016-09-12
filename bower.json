@@ -1,0 +1,20 @@
+{
+  "name": "buggytar",
+  "description": "JS13kgames entry",
+  "main": "index.js",
+  "authors": [
+    "Piotr Bogdan"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kontra": "^2.1.1"
+  }
+}
