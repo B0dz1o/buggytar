@@ -10,6 +10,7 @@ glob.stateMachine = {
         startButton();
         break;
       case 'guitar_loaded':
+        console.log('gitara');
         play();
       default:
         break;
@@ -48,16 +49,34 @@ var guitarscrVC = {
         guitarscrVC.button(i, 'white');
       }
     }
-
 }
 
-// canvas.addEventListener('click', function (event) {
-//   if (event.pageY > 1.9 * centerY) {
-//     var butNum = Math.floor(event.pageX / (0.4 * centerX));
-//     button(butNum,'green');
-//   }
-// });
+var play = function(){
+  var canvas = document.getElementById('mainCanvas');
+  var centerX = canvas.width / 2;
+  var centerY = canvas.height / 2;
+  var listener = function(event){
+    if (event.pageY > 1.9 * centerY) {
+      var butNum = Math.floor(event.pageX / (0.4 * centerX));
+      guitarscrVC.button(butNum,'green');
+    }
+  };
+  canvas.addEventListener('click', listener);
+  console.log('tutaj');
+  chooseSongs();
+};
 
-var play = function(){};
+var chooseSongs = function() {
+  count = songs.length;
+  var ind = Math.floor(Math.random() * count);
+  var ind2 = ind;
+  for(; ind2 === ind; ) {
+    ind2 = Math.floor(Math.random() * count);
+  }
+  var song1 = songs[ind];
+  var song2 = songs[ind2];
+  playNotes(song1.notes, song1.tempo);
+  playNotes(song2.notes, song2.tempo);
+}
 
 welcomeScreen();
