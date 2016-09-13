@@ -29,5 +29,5 @@ house_rising2 = cMaj.slice(1,4).concat(aMin.slice(0).reverse().slice(0,3));
 house_rising3 = dMaj.slice(2,5).concat(dMaj.slice(0).reverse().slice(0,3));
 house_rising4 = fMaj.slice(0,1).concat(fMaj.slice(2,4),
   fMaj.slice(0).reverse().slice(0,3));
-playNotes(gfather1.concat(gfather2));
-playNotes(house_rising1.concat(house_rising2, house_rising3, house_rising4), 180);
+// playNotes(gfather1.concat(gfather2));
+// playNotes(house_rising1.concat(house_rising2, house_rising3, house_rising4), 180);
