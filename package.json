@@ -1,6 +1,6 @@
 {
   "name": "buggytar",
-  "version": "1.0.0rc1",
+  "version": "1.0.0rc2",
   "description": "JS13kgames entry",
   "main": "index.html",
   "scripts": {
