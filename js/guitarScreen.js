@@ -51,25 +51,6 @@ guitarScreen = function() {
   }
   context.restore();
 
-  /// answers
-  var button = function(num, color) {
-    i = num;
-    context.beginPath()
-    context.rect(0.4* i * centerX, 1.9 * centerY,0.4 * centerX, 0.1 * centerY);
-    context.fillStyle = color || 'white';
-    context.strokeStyle = 'grey';
-    context.fill();
-    context.stroke();
-  }
-  for (i = 0 ; i < 5; ++i) {
-    button(i, 'white');
-  }
-
-  canvas.addEventListener('click', function (event) {
-    if (event.pageY > 1.9 * centerY) {
-      var butNum = Math.floor(event.pageX / (0.4 * centerX));
-      button(butNum,'green');
-    }
-  });
+  glob.stateMachine.statechanged('guitar_loaded');
 
 };

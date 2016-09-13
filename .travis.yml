@@ -9,3 +9,6 @@ branches:
     - master
     - develop
     - /^release\/[\w\.]+$/
+cache:
+  directories:
+  - node_modules # NPM packages
