@@ -11,6 +11,10 @@ glob.stateMachine = {
         break;
       case 'guitar_loaded':
         play();
+        break;
+      case 'new_songs':
+        play();
+        break;
       default:
         break;
     }
@@ -54,6 +58,9 @@ var guitarscrVC = {
     }
 }
 
+pressed = 0;
+selected = -1;
+
 var play = function(){
   var canvas = document.getElementById('mainCanvas');
   var centerX = canvas.width / 2;
@@ -62,8 +69,27 @@ var play = function(){
   var listener = function(event){
     if (event.pageY > 1.9 * centerY) {
       var butNum = Math.floor(event.pageX / (0.5 * centerX));
-      guitarscrVC.button(butNum,'green');
-      showTitles(songs[btns[butNum]].title, butNum);
+      var chosenSong = songs[btns[butNum]];
+      if (btns[butNum] === selected){
+        return;
+      } else if (pressed === 0){
+        selected = btns[butNum];
+        pressed += 1;
+        var color = (chosenSong.title === song1.title || chosenSong.title === song2.title) ? 'green' : 'red';
+        guitarscrVC.button(butNum,color);
+        showTitles(songs[btns[butNum]].title, butNum);
+      } else if (pressed === 1) {
+        pressed = 0;
+        selected = -1;
+        var color = (chosenSong.title === song1.title || chosenSong.title === song2.title) ? 'green' : 'red';
+        guitarscrVC.button(butNum,color);
+        showTitles(songs[btns[butNum]].title, butNum);
+        seq1.stop();
+        seq2.stop();
+        setTimeout(function(){
+          glob.stateMachine.statechanged('new_songs');
+        }, 1000);
+      }
     }
   };
   canvas.addEventListener('click', listener);
@@ -86,7 +112,7 @@ var showTitles = function(title, index) {
   var centerY = canvas.height / 2;
   var context = canvas.getContext('2d');
   context.font = '14px Gill Sans Extrabold fantasy';
-  context.fillStyle = 'black'
+  context.fillStyle = 'black';
   context.fillText(title , 0.5 * index * centerX + 0.05 * centerX , 1.98 * centerY, 0.4 * centerX);
 }
 
@@ -104,15 +130,15 @@ var chooseSongs = function() {
   for(; [ind1, ind2, ind3].indexOf(ind4) !== -1; ) {
     ind4 = Math.floor(Math.random() * count);
   }
-  var song1 = songs[ind1];
-  var song2 = songs[ind2];
-  playNotes(song1.notes, song1.tempo);
-  playNotes(song2.notes, song2.tempo, 0.2);
+  song1 = songs[ind1];
+  song2 = songs[ind2];
+  seq1 = playNotes(song1.notes, song1.tempo);
+  seq2 = playNotes(song2.notes, song2.tempo, 0.2);
   btns = [ind1, ind2, ind3, ind4];
   shuffle(btns);
   for (i = 0; i < 4; ++i) {
     showTitles(songs[btns[i]].title, i);
   }
-}
+};
 
 welcomeScreen();
