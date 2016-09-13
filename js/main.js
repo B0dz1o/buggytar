@@ -34,8 +34,7 @@ var startButton = function(){
 };
 
 var guitarscrVC = {
-  button: function() {
-    function(num, color) {
+  button: function(num, color) {
       i = num;
       context.beginPath()
       context.rect(0.4* i * centerX, 1.9 * centerY,0.4 * centerX, 0.1 * centerY);
@@ -52,13 +51,13 @@ var guitarscrVC = {
 
 }
 
-canvas.addEventListener('click', function (event) {
-  if (event.pageY > 1.9 * centerY) {
-    var butNum = Math.floor(event.pageX / (0.4 * centerX));
-    button(butNum,'green');
-  }
-});
+// canvas.addEventListener('click', function (event) {
+//   if (event.pageY > 1.9 * centerY) {
+//     var butNum = Math.floor(event.pageX / (0.4 * centerX));
+//     button(butNum,'green');
+//   }
+// });
 
-var play() = function(){};
+var play = function(){};
 
 welcomeScreen();
