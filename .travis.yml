@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "6.1"
+before_script:
+  - npm install -g gulp
+script: gulp build
+branches:
+  only:
+    - master
+    - develop
+    - /^release\/[\w\.]+$/
+cache:
+  directories:
+  - node_modules # NPM packages
