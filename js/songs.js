@@ -1,7 +1,8 @@
 ac = new AudioContext();
 
-var playNotes = function(strums, pTempo) {
+var playNotes = function(strums, pTempo, pDelay) {
   var tempo = pTempo || 120;
+  var delay = pDelay || 0.0;
   var when = ac.currentTime + 0.5;
   var sequence = new TinyMusic.Sequence( ac, tempo, strums );
   sequence.loop = false;
