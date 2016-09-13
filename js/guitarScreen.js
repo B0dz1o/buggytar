@@ -1,5 +1,5 @@
 ///main screen drawn in canvas
-(function() {
+guitarScreen = function() {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
   var centerX = canvas.width / 2;
@@ -72,4 +72,4 @@
     }
   });
 
-})();
+};

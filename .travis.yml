@@ -7,5 +7,5 @@ script: gulp build
 branches:
   only:
     - master
-    - development
+    - develop
     - /^release\/[\w\.]+$/

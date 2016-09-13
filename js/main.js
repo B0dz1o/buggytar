@@ -1,3 +1,37 @@
+if(typeof glob === 'undefined'){
+  glob = {};
+}
+glob.stateMachine = {
+  state: '',
+  statechanged: function(newState) {
+    state = newState;
+    switch(newState) {
+      case 'welcome_loaded':
+        startButton();
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+var startButton = function(){
+  var canvas = document.getElementById('mainCanvas');
+  var centerX = canvas.width / 2;
+  var centerY = canvas.height / 2;
+  var listener = function (event) {
+    if (event.pageY > 1.7 * centerY &&
+      event.pageY < 1.95 * centerY &&
+      event.pageX > 0.4 * centerX &&
+      event.pageX < 1.6 * centerX) {
+        canvas.removeEventListener('click', listener);
+        guitarScreen();
+    }
+  };
+  canvas.addEventListener('click', listener);
+};
+
+
 ac = new AudioContext();
 
 var playNotes = function(strums, pTempo) {
@@ -31,3 +65,5 @@ house_rising4 = fMaj.slice(0,1).concat(fMaj.slice(2,4),
   fMaj.slice(0).reverse().slice(0,3));
 // playNotes(gfather1.concat(gfather2));
 // playNotes(house_rising1.concat(house_rising2, house_rising3, house_rising4), 180);
+
+welcomeScreen();
